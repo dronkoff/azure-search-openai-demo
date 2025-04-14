@@ -1,0 +1,4 @@
+name: Deploy without Provision
+
+on:
+  workflow_dispatch:
