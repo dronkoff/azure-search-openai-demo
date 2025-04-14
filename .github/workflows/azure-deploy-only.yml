@@ -18,9 +18,9 @@ jobs:
       AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
       AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
       ## Define the additional variables or secrets that are required globally (provision and deploy)
-      # ADDITIONAL_VARIABLE_PLACEHOLDER: ${{ variables.ADDITIONAL_VARIABLE_PLACEHOLDER }}
+      # ADDITIONAL_VARIABLE_PLACEHOLDER: ${{ vars.ADDITIONAL_VARIABLE_PLACEHOLDER }}
       # ADDITIONAL_SECRET_PLACEHOLDER: ${{ secrets.ADDITIONAL_SECRET_PLACEHOLDER }}
-      AZURE_CONTAINER_REGISTRY_ENDPOINT: ${{ variables.AZURE_CONTAINER_REGISTRY_ENDPOINT }}
+      AZURE_CONTAINER_REGISTRY_ENDPOINT: ${{ vars.AZURE_CONTAINER_REGISTRY_ENDPOINT }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
