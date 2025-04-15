@@ -65,16 +65,15 @@ jobs:
             --tenant-id "$Env:AZURE_TENANT_ID"
         shell: pwsh
 
-      - name: Deploy Application
+      - name: Create azd environment
         run: |
-          azd env new $Env:AZURE_ENV_NAME --debug --no-prompt
-          azd env set DEPLOYMENT_TARGET $Env:DEPLOYMENT_TARGET --debug --no-prompt
+          azd env new $Env:AZURE_ENV_NAME --no-prompt
+          azd env set DEPLOYMENT_TARGET $Env:DEPLOYMENT_TARGET --no-prompt
+          azd env refresh --no-prompt
+          cat .\.azure\Chat-App-Dev\.env
+          cat .\.azure\Chat-App-Dev\config.json
         shell: pwsh
 
       - name: Deploy Application
-        run: azd package --debug --no-prompt
-        shell: pwsh
-
-      - name: Deploy Application
-        run: azd deploy --debug --no-prompt
+        run: azd deploy --no-prompt
         shell: pwsh
