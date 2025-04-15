@@ -15,12 +15,13 @@ jobs:
       AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
       AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
       AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
+      DEPLOYMENT_TARGET: ${{ vars.DEPLOYMENT_TARGET }}
       ## Define the additional variables or secrets that are required globally (provision and deploy)
       # ADDITIONAL_VARIABLE_PLACEHOLDER: ${{ vars.ADDITIONAL_VARIABLE_PLACEHOLDER }}
       # ADDITIONAL_SECRET_PLACEHOLDER: ${{ secrets.ADDITIONAL_SECRET_PLACEHOLDER }}
-      AZURE_CONTAINER_REGISTRY_ENDPOINT: ${{ vars.AZURE_CONTAINER_REGISTRY_ENDPOINT }}
       #AZURE_CHAT_HISTORY_CONTAINER: ${{ vars.AZURE_CHAT_HISTORY_CONTAINER }}
       #AZURE_CHAT_HISTORY_DATABASE: ${{ vars.AZURE_CHAT_HISTORY_DATABASE }}
       #AZURE_CHAT_HISTORY_VERSION: ${{ vars.AZURE_CHAT_HISTORY_VERSION }}
@@ -33,7 +34,6 @@ jobs:
       #AZURE_OPENAI_GPT4V_MODEL: ${{ vars.AZURE_OPENAI_GPT4V_MODEL }}
       #AZURE_OPENAI_RESOURCE_GROUP: ${{ vars.AZURE_OPENAI_RESOURCE_GROUP }}
       #AZURE_OPENAI_SERVICE: ${{ vars.AZURE_OPENAI_SERVICE }}
-      AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
       #AZURE_SEARCH_INDEX: ${{ vars.AZURE_SEARCH_INDEX }}
       #AZURE_SEARCH_SEMANTIC_RANKER: ${{ vars.AZURE_SEARCH_SEMANTIC_RANKER }}
       #AZURE_SEARCH_SERVICE: ${{ vars.AZURE_SEARCH_SERVICE }}
@@ -66,7 +66,15 @@ jobs:
         shell: pwsh
 
       - name: Deploy Application
+        run: |
+          azd env new $Env:AZURE_ENV_NAME --debug --no-prompt
+          azd env set DEPLOYMENT_TARGET $Env:DEPLOYMENT_TARGET --debug --no-prompt
+        shell: pwsh
+
+      - name: Deploy Application
         run: azd package --debug --no-prompt
+        shell: pwsh
 
       - name: Deploy Application
         run: azd deploy --debug --no-prompt
+        shell: pwsh
