@@ -66,7 +66,7 @@ jobs:
         shell: pwsh
 
       - name: Deploy Application
-        run: azd package --no-prompt
+        run: azd package --debug --no-prompt
 
       - name: Deploy Application
-        run: azd deploy --no-prompt
+        run: azd deploy --debug --no-prompt
