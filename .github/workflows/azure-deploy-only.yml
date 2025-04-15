@@ -19,6 +19,9 @@ jobs:
       AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
       AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
       DEPLOYMENT_TARGET: ${{ vars.DEPLOYMENT_TARGET }}
+      AZURE_APP_SERVICE_PLAN: ${{ vars.AZURE_APP_SERVICE_PLAN }}
+      AZURE_APP_SERVICE: ${{ vars.AZURE_APP_SERVICE }}
+      AZURE_APP_SERVICE_SKU: ${{ vars.AZURE_APP_SERVICE_SKU }}
       ## Define the additional variables or secrets that are required globally (provision and deploy)
       # ADDITIONAL_VARIABLE_PLACEHOLDER: ${{ vars.ADDITIONAL_VARIABLE_PLACEHOLDER }}
       # ADDITIONAL_SECRET_PLACEHOLDER: ${{ secrets.ADDITIONAL_SECRET_PLACEHOLDER }}
