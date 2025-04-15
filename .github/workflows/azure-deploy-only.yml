@@ -69,9 +69,10 @@ jobs:
         run: |
           azd env new $Env:AZURE_ENV_NAME --no-prompt
           azd env set DEPLOYMENT_TARGET $Env:DEPLOYMENT_TARGET --no-prompt
-          azd env refresh --no-prompt
-          cat .\.azure\Chat-App-Dev\.env
-          cat .\.azure\Chat-App-Dev\config.json
+          azd env list
+          #azd env refresh --no-prompt
+          #cat .\.azure\Chat-App-Dev\.env
+          #cat .\.azure\Chat-App-Dev\config.json
         shell: pwsh
 
       - name: Deploy Application
